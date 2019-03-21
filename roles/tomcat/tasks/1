@@ -1,0 +1,10 @@
+---
+# tasks file for tomcat
+- name: Install basic software
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - java-1.8.0-openjdk
+    - tomcat8
+

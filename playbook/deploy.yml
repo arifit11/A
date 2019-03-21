@@ -1,0 +1,15 @@
+---
+ - hosts: tomcatServers
+   become: true
+   tasks:
+     - name : create war file out of .jar
+       command : jar -cvf ~/deploy/simple-application.war ~/deploy/simple-application.jar
+
+     - name : stop tomcat server
+       service: name=tomcat8 state=stopped
+
+     - name : Copy the WAR file you have just created to CATALINA_HOME/webapps
+       copy: src=~/deploy/simple-application.war dest=/var/lib/tomcat8/webapps/
+
+     - name : stop tomcat server
+       shell: service tomcat8 start

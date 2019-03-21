@@ -1,0 +1,13 @@
+---
+# tasks file for tomcat
+- name: installing repo for Java 8 in Ubuntu
+  apt_repository: repo='ppa:openjdk-r/ppa'
+
+- name: Install basic software
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - openjdk-8-jdk
+    - tomcat8
+

@@ -1,0 +1,7 @@
+---
+  - hosts: tomcatServers
+    become: true
+    roles:
+      - roles/apache2
+      #- roles/demo_app
+
